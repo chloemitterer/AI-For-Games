@@ -36,6 +36,7 @@ class Path(object):
         self._num_pts = num_pts
         self._cur_pt_idx = -1
         self._pts = []
+        
         if num_pts > 0:
             self.create_random_path(num_pts, minx, miny, maxx, maxy)
 
@@ -51,6 +52,8 @@ class Path(object):
         self._cur_pt_idx += 1
         if self.is_finished() and self.looped:
             self._cur_pt_idx = 0
+
+    
 
     def is_finished(self):
         ''' Return True if at the end of the path. '''

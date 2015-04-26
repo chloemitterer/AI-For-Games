@@ -46,6 +46,9 @@ class Agent(object):
         self.force = Vector2D()  # current steering force
         self.accel = Vector2D() # current acceleration due to force
         self.mass = mass
+        self.path = Path()
+        self.randomise_path(10)
+        self.waypoint_threshold = 5.0
 
         # data for drawing this agent
         self.color = 'ORANGE'
@@ -67,7 +70,7 @@ class Agent(object):
         # debug draw info?
         self.show_info = False
 
-    def calculate(self):
+    def calculate(self, delta):
         # calculate the current steering force
         mode = self.mode
         if mode == 'seek':
@@ -149,6 +152,12 @@ class Agent(object):
     def speed(self):
         return self.vel.length()
 
+    def randomise_path(self, num_pts):
+        cx = self.world.cx
+        cy = self.world.cy
+        margin = min(cx, cy) * (1/6)
+        self.path.create_random_path(num_pts, 0+margin, 0+margin, cx-margin, cy-margin)
+
     #--------------------------------------------------------------------------
 
     def seek(self, target_pos):
@@ -193,3 +202,9 @@ class Agent(object):
         ''' Random wandering using a projected jitter circle. '''
         ## ...
         return Vector2D()
+
+    def follow_path(self):
+        if self.path.is_finished():
+            return self.arrive(self.path.current_pt())
+        elif self.path.current_pt().distance(self.path.current_pt()) < self.waypoint_threshold:
+            self.path.inc_current_pt()
