@@ -48,7 +48,7 @@ class Agent(object):
         self.mass = mass
         self.path = Path()
         self.randomise_path(10)
-        self.waypoint_threshold = 5.0
+        self.waypoint_threshold = 10.0
 
         # data for drawing this agent
         self.color = 'ORANGE'
@@ -121,7 +121,7 @@ class Agent(object):
         # draw the path if it exists and the mode is follow
         if self.mode == 'follow_path':
             ## ...
-            pass
+            self.path.render()
 
         # draw the ship
         egi.set_pen_color(name=self.color)
@@ -205,6 +205,7 @@ class Agent(object):
 
     def follow_path(self):
         if self.path.is_finished():
-            return self.arrive(self.path.current_pt())
-        elif self.path.current_pt().distance(self.path.current_pt()) < self.waypoint_threshold:
+            return self.arrive(self.path.current_pt(), 'slow')
+        elif self.path.current_pt().distance(self.pos) < self.waypoint_threshold:
             self.path.inc_current_pt()
+        return self.seek(self.path.current_pt())
