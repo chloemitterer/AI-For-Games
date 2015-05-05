@@ -25,7 +25,8 @@ def on_key_press(symbol, modifiers):
         for agent in world.agents:
             agent.mode = AGENT_MODES[symbol]
     ## LAB 05 TASK 2: Add agent by pressing a key
-    # ...
+    elif symbol == KEY.A:
+        world.agents.append(Agent(world))
 
     ## LAB 06 TASK 1: Reset all paths to new random ones
     # ...

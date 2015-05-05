@@ -46,9 +46,7 @@ class Agent(object):
         self.force = Vector2D()  # current steering force
         self.accel = Vector2D() # current acceleration due to force
         self.mass = mass
-        self.path = Path()
-        self.randomise_path(10)
-        self.waypoint_threshold = 10.0
+        
 
         # data for drawing this agent
         self.color = 'ORANGE'
@@ -59,10 +57,16 @@ class Agent(object):
         ]
         ### path to follow?
         # self.path = ??
-
+        self.path = Path()
+        self.randomise_path(10)
+        self.waypoint_threshold = 10.0
         ### wander details
         # self.wander_?? ...
-
+        self.wander_target = Vector2D(1, 0)
+        self.wander_dist = 1.0 * scale
+        self.wander_radius = 1.0 * scale
+        self.wander_jitter = 10.0 * scale
+        self.bRadius = scale
         # limits?
         self.max_speed = 20.0 * scale
         ## max_force ??
@@ -133,7 +137,16 @@ class Agent(object):
         # draw wander info?
         if self.mode == 'wander':
             ## ...
-            pass
+            wnd_pos = Vector2D(self.wander_dist, 0)
+            wld_pos = self.world.transform_point(wnd_pos, self.pos, self.heading, self.side)
+
+            egi.green_pen()
+            egi.circle(wld_pos, self.wander_radius)
+
+            egi.red_pen()
+            wnd_pos = (self.wander_target + Vector2D(self.wander_dist, 0))
+            wld_pos = self.world.transform_point(wnd_pos, self.pos, self.heading, self.side)
+            egi.circle(wld_pos, 3)
 
         # add some handy debug drawing info lines - force and velocity
         if self.show_info:
@@ -201,7 +214,15 @@ class Agent(object):
     def wander(self, delta):
         ''' Random wandering using a projected jitter circle. '''
         ## ...
-        return Vector2D()
+        wt = self.wander_target
+        jitter_tts = self.wander_jitter * delta
+        wt += Vector2D(uniform(-1, 1) * jitter_tts, uniform(-1, 1) * jitter_tts)
+        wt.normalise()
+        wt *= self.wander_radius
+        target = wt + Vector2D(self.wander_dist, 0)
+        wld_target = self.world.transform_point(target, self.pos, self.heading, self.side)
+
+        return self.seek(wld_target)
 
     def follow_path(self):
         if self.path.is_finished():
