@@ -1,0 +1,41 @@
+Spike Outcome Report
+-------------------- 
+Number: 07
+Spike Title: Emergent Group Behaviour
+Personal: Chloe Mitterer 9725725
+
+Goals:  
+Goals/Deliverables: [CODE] + [SPIKE REPORT]
+Create a group agent steering behaviour simulation that is able to demonstrate distinct
+modes of emergent group behaviour. In particular, the simulation must:
+• Include cohesion, separation and alignment steering behaviours
+• Include basic wandering behaviours
+• Use weighted-sum to combine all steering behaviours
+• Support the adjustment of parameters for each steering force while running
+
+Technologies, Tools, and Resources used:
+Sublime Text 3
+Lecture on Autonomously Moving Agents
+Files from lab 06
+
+Tasks undertaken: 
+* Read lecture on Autonomously Moving Agents
+* Read goals for Spike
+* Make certain you are familiar with the files from lab 06
+* Add new key presses that will control cohesion, separation, wander and alignment
+* Add a dictionary that will control the levels for cohesion, seperation, wander and alignment (set initially to 100)
+* Using code from the lecture, create new functions in agent for cohesion, separation and alignment
+* In main create a function that will draw on the screen the current levels of cohesion, separation, wander and alignment
+* Back in agent create a function called emergent that uses all four of cohesion, seperation, wander and alignment to designate force, using the code from the lecture.
+* Limit force either with a max_force value in init or using truncate in emergent.
+*test to make sure everything is working, fix compiling errors
+*test different value combinations for cohesion, separation, alignment and wander to make certain each is working (test each individually with the others set at 0).
+
+What we found out:
+* How to sum together steering behaviours
+* How to truncate
+* How to program cohesion, seperation and alignment as force modifiers
+
+Recommendations [Optional]:
+* Wander had to be divided by 100 because its force was too strong
+* Has increased confidence and knowledge of the team
