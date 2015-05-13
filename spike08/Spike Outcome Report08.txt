@@ -1,0 +1,46 @@
+Spike Outcome Report
+-------------------- 
+Number: 08
+Spike Title: Emergent Group Behaviour
+Personal: Chloe Mitterer 9725725
+
+Goals:  
+Create a hunter-prey agent simulation for two or more agents, in which "prey" agents avoid
+"hunter" agents by concealing themselves behind objects in the environment. The simulation must:
+• Include several "objects" that prey can hide behind (simple circles).
+• Show a distinction between the "hunter" and "prey" agent appearance and abilities.
+• Show an indicator ("x" or similar) to indicate suitable "hide" locations for prey to select from
+• Prey agents must select a “good” location, and head to it, based on tactical evaluation.
+Note: leave instructions on how to use your code (keys to use) with your code / report.
+
+KEYS: Press A to add more hiding agents
+
+Technologies, Tools, and Resources used:
+Sublime Text 3
+Lecture on Autonomously Moving Agents
+Files from Spike 07
+
+Tasks undertaken: 
+* Read lecture on Autonomously Moving Agents
+* Read goals for Spike
+* Make certain you are familiar with the files from lab 07
+* Remove unnecessary functions and other code from the files (things that do not directly relate to behaviours necessary such as wandering and arriving)
+* Create a class for the objects that will be used to hide behind
+* The object must initialise and must have a render function
+* Create several of the objects in the main function
+* Initialise a hunter in world.py with different attributes to the normal agents. The hunter should be set to wander
+* Make a function that determines the hiding spots for a hunter in a particular frame, this function can be in world.py
+* The function should use normalise to determine this
+* Create another function that determines the "best" hiding spot by determining which of the hiding spots is furthest away from the hunter.
+* Now create a hide function in agent, which will be what the agent is doing
+* Determine where the best hiding spot is and have the agent arrive at the hiding spot
+* If there is no best hiding spot, set the agent to flee
+* Test!
+
+What we found out:
+* How to use normalise
+* How to make an agent hide from another agent
+
+Recommendations [Optional]:
+* Work on multiple hunters later
+* Has increased confidence and knowledge for the team

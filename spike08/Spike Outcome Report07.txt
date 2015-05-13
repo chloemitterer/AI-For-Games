@@ -1,17 +1,19 @@
 Spike Outcome Report
 -------------------- 
-Number: 07
+Number: 08
 Spike Title: Emergent Group Behaviour
 Personal: Chloe Mitterer 9725725
 
 Goals:  
-Goals/Deliverables: [CODE] + [SPIKE REPORT]
-Create a group agent steering behaviour simulation that is able to demonstrate distinct
-modes of emergent group behaviour. In particular, the simulation must:
-• Include cohesion, separation and alignment steering behaviours
-• Include basic wandering behaviours
-• Use weighted-sum to combine all steering behaviours
-• Support the adjustment of parameters for each steering force while running
+Create a hunter-prey agent simulation for two or more agents, in which "prey" agents avoid
+"hunter" agents by concealing themselves behind objects in the environment. The simulation must:
+• Include several "objects" that prey can hide behind (simple circles).
+• Show a distinction between the "hunter" and "prey" agent appearance and abilities.
+• Show an indicator ("x" or similar) to indicate suitable "hide" locations for prey to select from
+• Prey agents must select a “good” location, and head to it, based on tactical evaluation.
+Note: leave instructions on how to use your code (keys to use) with your code / report.
+
+KEYS: 
 
 Technologies, Tools, and Resources used:
 Sublime Text 3
