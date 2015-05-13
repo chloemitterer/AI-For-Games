@@ -1,1 +1,14 @@
 planning notes
+
+need still agent
+need moving agent - path following agent
+
+moves in a circle around a path
+- keep path code stuff
+
+still agent needs "shooting" behaviour
+
+shooting behaviour needs weapon type (weapon)
+
+weapon type needs accuracy and speed
+
